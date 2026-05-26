@@ -10,7 +10,11 @@ public class HintSystem : MonoBehaviour
     {
         riddleText.gameObject.SetActive(false);
         hintText.gameObject.SetActive(false);
+        
+        FindObjectOfType<UIInteraction>().ShowHintControls();
     }
+
+    
 
     public void ShowRiddle()
     {
