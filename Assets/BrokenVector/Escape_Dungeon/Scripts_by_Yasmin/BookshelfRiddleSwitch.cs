@@ -23,6 +23,6 @@ public class BookshelfRiddleSwitch : InteractableBase
         }
 
         roomPuzzleState.UnlockChest();
-        treasureChestController.UnlockChest();
+        treasureChestController.OpenChest();
     }
 }
