@@ -20687,7 +20687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPrompt: Interact
   objectId: paper03
-  puzzleController: {fileID: 0}
+  puzzleController: {fileID: 1990815324}
 --- !u!65 &446196098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58342,7 +58342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPrompt: Interact
   objectId: paper01
-  puzzleController: {fileID: 0}
+  puzzleController: {fileID: 1990815324}
 --- !u!65 &935469575
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82540,7 +82540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPrompt: Interact
   objectId: book06
-  puzzleController: {fileID: 0}
+  puzzleController: {fileID: 1990815324}
 --- !u!65 &1533863258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106645,8 +106645,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f7be7092b7fae45b4029fb89a16637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctSequence: []
-  treasureChestController: {fileID: 0}
+  correctSequence:
+  - {fileID: 446196095}
+  - {fileID: 1533863255}
+  - {fileID: 935469572}
+  treasureChestController: {fileID: 821596955}
 --- !u!1001 &1991073008
 PrefabInstance:
   m_ObjectHideFlags: 0
