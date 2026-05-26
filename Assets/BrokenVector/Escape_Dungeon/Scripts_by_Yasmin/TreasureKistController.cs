@@ -14,10 +14,18 @@ public class TreasureKistController : MonoBehaviour
     private bool isUnlocked;
     private bool isOpened;
 
+   private void Start()
+{
+    if (animator != null)
+    {
+        animator.SetTrigger("Open");
+    }
+}
     public void Interact()
     {
         if (!isUnlocked || isOpened)
         {
+            Debug.Log("Trigger Open wordt gezet");
             return;
         }
 
