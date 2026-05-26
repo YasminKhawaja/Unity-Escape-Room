@@ -20605,6 +20605,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 127188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 446196095}
+    - targetCorrespondingSourceObject: {fileID: 127188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 446196098}
   m_SourcePrefab: {fileID: 100100000, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
 --- !u!4 &446196093 stripped
 Transform:
@@ -20631,6 +20634,27 @@ MonoBehaviour:
   interactionPrompt: Interact
   objectId: paper03
   puzzleController: {fileID: 0}
+--- !u!65 &446196098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446196094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21537209, y: 0.000000035157427, z: 0.2774706}
+  m_Center: {x: 0, y: 0.0022017737, z: 0.00000047683716}
 --- !u!1001 &446661810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58214,6 +58238,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 142692, guid: e0e444834ba54dcd863b19283e180747, type: 3}
       insertIndex: -1
       addedObject: {fileID: 935469572}
+    - targetCorrespondingSourceObject: {fileID: 142692, guid: e0e444834ba54dcd863b19283e180747, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 935469575}
   m_SourcePrefab: {fileID: 100100000, guid: e0e444834ba54dcd863b19283e180747, type: 3}
 --- !u!4 &935469570 stripped
 Transform:
@@ -58240,6 +58267,27 @@ MonoBehaviour:
   interactionPrompt: Interact
   objectId: paper01
   puzzleController: {fileID: 0}
+--- !u!65 &935469575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935469571}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21537216, y: 0.110777974, z: 0.2774726}
+  m_Center: {x: 0, y: 0.055388972, z: -0.00000047683733}
 --- !u!1001 &935755076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81521,6 +81569,7 @@ Transform:
   - {fileID: 1533863253}
   - {fileID: 935469570}
   - {fileID: 446196093}
+  - {fileID: 1990815323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1506197427
@@ -82383,6 +82432,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 173732, guid: 147f183af15640289aa7154f0ea2de5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1533863255}
+    - targetCorrespondingSourceObject: {fileID: 173732, guid: 147f183af15640289aa7154f0ea2de5c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1533863258}
   m_SourcePrefab: {fileID: 100100000, guid: 147f183af15640289aa7154f0ea2de5c, type: 3}
 --- !u!4 &1533863253 stripped
 Transform:
@@ -82409,6 +82461,27 @@ MonoBehaviour:
   interactionPrompt: Interact
   objectId: book06
   puzzleController: {fileID: 0}
+--- !u!65 &1533863258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533863254}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.48480415, y: 0.076673694, z: 0.30349922}
+  m_Center: {x: -0.0000009536743, y: 0.03833681, z: 0}
 --- !u!1001 &1534266337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106443,6 +106516,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 441946, guid: 452a86ca4bb346709707701376fdcd66, type: 3}
   m_PrefabInstance: {fileID: 1990531747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1990815322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990815323}
+  - component: {fileID: 1990815324}
+  m_Layer: 0
+  m_Name: FinalRoomPuzzleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990815323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990815322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1505450844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1990815324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990815322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f7be7092b7fae45b4029fb89a16637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctSequence: []
+  treasureChestController: {fileID: 0}
 --- !u!1001 &1991073008
 PrefabInstance:
   m_ObjectHideFlags: 0
