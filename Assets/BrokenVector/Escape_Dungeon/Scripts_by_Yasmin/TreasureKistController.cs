@@ -11,11 +11,18 @@ public class TreasureKistController : MonoBehaviour
     private bool isUnlocked;
     private bool isOpened;
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        Debug.Log("Start draait");
+
+        if (animator != null)
         {
+            Debug.Log("Animator gevonden op: " + animator.gameObject.name);
             animator.SetTrigger("Open");
+        }
+        else
+        {
+            Debug.Log("Animator is null");
         }
     }
 
@@ -33,7 +40,7 @@ public class TreasureKistController : MonoBehaviour
 
         if (animator != null)
         {
-            Debug.Log("Open trigger wordt gezet");
+            Debug.Log("Open trigger gezet");
             animator.SetTrigger("Open");
         }
         else
@@ -65,6 +72,5 @@ public class TreasureKistController : MonoBehaviour
     public void UnlockChest()
     {
         isUnlocked = true;
-        Debug.Log("Kist unlocked");
     }
 }
