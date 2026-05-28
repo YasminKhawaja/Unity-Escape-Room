@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class TreasureKistController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-
     [SerializeField] private RoomPuzzleState roomPuzzleState;
     [SerializeField] private KeyPickUpInteractable keyPickupInteractable;
     [SerializeField] private Animator animator;
@@ -14,27 +11,39 @@ public class TreasureKistController : MonoBehaviour
     private bool isUnlocked;
     private bool isOpened;
 
-   private void Start()
-{
-    if (animator != null)
+    private void Update()
     {
-        animator.SetTrigger("Open");
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Open");
+        }
     }
-}
+
     public void Interact()
     {
+        Debug.Log("Interact aangeroepen");
+
         if (!isUnlocked || isOpened)
         {
-            Debug.Log("Trigger Open wordt gezet");
+            Debug.Log("Kist is nog locked of al open");
             return;
         }
 
         isOpened = true;
-        roomPuzzleState.OpenChest();
 
         if (animator != null)
         {
+            Debug.Log("Open trigger wordt gezet");
             animator.SetTrigger("Open");
+        }
+        else
+        {
+            Debug.Log("Animator is null");
+        }
+
+        if (roomPuzzleState != null)
+        {
+            roomPuzzleState.OpenChest();
         }
 
         if (openAudioSource != null)
@@ -47,12 +56,15 @@ public class TreasureKistController : MonoBehaviour
             chestFeedbackLight.intensity = 4f;
         }
 
-        keyPickupInteractable.UnlockKey();
+        if (keyPickupInteractable != null)
+        {
+            keyPickupInteractable.UnlockKey();
+        }
     }
 
     public void UnlockChest()
     {
         isUnlocked = true;
+        Debug.Log("Kist unlocked");
     }
 }
-

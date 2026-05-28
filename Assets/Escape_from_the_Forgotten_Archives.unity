@@ -16498,13 +16498,16 @@ PrefabInstance:
       addedObject: {fileID: 319396659}
     - targetCorrespondingSourceObject: {fileID: 101712, guid: f145d8a31a7a4126899cac55d3396d94, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 319396661}
+      addedObject: {fileID: 319396660}
     - targetCorrespondingSourceObject: {fileID: 101712, guid: f145d8a31a7a4126899cac55d3396d94, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 319396660}
+      addedObject: {fileID: 319396665}
     - targetCorrespondingSourceObject: {fileID: 101714, guid: f145d8a31a7a4126899cac55d3396d94, type: 3}
       insertIndex: -1
       addedObject: {fileID: 614944800}
+    - targetCorrespondingSourceObject: {fileID: 101714, guid: f145d8a31a7a4126899cac55d3396d94, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 614944804}
   m_SourcePrefab: {fileID: 100100000, guid: f145d8a31a7a4126899cac55d3396d94, type: 3}
 --- !u!4 &319396657 stripped
 Transform:
@@ -16627,31 +16630,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPuzzleState: {fileID: 0}
   keyPickupInteractable: {fileID: 0}
-  animator: {fileID: 319396661}
+  animator: {fileID: 614944800}
   openAudioSource: {fileID: 0}
   chestFeedbackLight: {fileID: 0}
---- !u!95 &319396661
-Animator:
-  serializedVersion: 7
+--- !u!54 &319396665
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319396658}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19f571075174b874798ad1d01504550c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &321185403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20695,9 +20703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fc6b22363e69c4598978aa0a3462d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Druk op E om te interageren.
-  objectId: paper03
-  puzzleController: {fileID: 0}
 --- !u!65 &446196098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37182,6 +37187,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &614944804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614944796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cc7fbb8d99a46458c19eeda75d3aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPuzzleState: {fileID: 0}
+  keyPickupInteractable: {fileID: 0}
+  animator: {fileID: 0}
+  openAudioSource: {fileID: 0}
+  chestFeedbackLight: {fileID: 0}
 --- !u!1001 &615563547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58325,9 +58347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fc6b22363e69c4598978aa0a3462d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Druk op E om te interageren.
-  objectId: paper01
-  puzzleController: {fileID: 0}
 --- !u!65 &935469575
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77830,15 +77849,15 @@ PrefabInstance:
       objectReference: {fileID: 883695835}
     - target: {fileID: 910335247549730496, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.105
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 910335247549730496, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.125
+      value: 0.466
       objectReference: {fileID: 0}
     - target: {fileID: 910335247549730496, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.046
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: 910335247549730496, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -82542,9 +82561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fc6b22363e69c4598978aa0a3462d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Druk op E om te interageren.
-  objectId: book06
-  puzzleController: {fileID: 0}
 --- !u!65 &1533863258
 BoxCollider:
   m_ObjectHideFlags: 0
