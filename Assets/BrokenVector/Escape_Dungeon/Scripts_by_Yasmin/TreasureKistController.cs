@@ -14,7 +14,6 @@ public class TreasureKistController : MonoBehaviour
     private void Start()
     {
         Debug.Log("Start draait");
-
         if (animator != null)
         {
             Debug.Log("Animator gevonden op: " + animator.gameObject.name);
