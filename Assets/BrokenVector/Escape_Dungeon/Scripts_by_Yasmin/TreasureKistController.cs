@@ -42,6 +42,8 @@ public class TreasureKistController : MonoBehaviour
 
     public void Interact()
     {
+        Debug.Log("Interact aangeroepen");
+        animator.SetTrigger("Open");
         Debug.Log("TreasureKistController.Interact() aangeroepen", this);
 
         if (!isUnlocked)
