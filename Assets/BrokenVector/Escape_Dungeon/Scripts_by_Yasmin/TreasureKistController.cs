@@ -2,54 +2,78 @@ using UnityEngine;
 
 public class TreasureKistController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private RoomPuzzleState roomPuzzleState;
     [SerializeField] private KeyPickUpInteractable keyPickupInteractable;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource openAudioSource;
     [SerializeField] private Light chestFeedbackLight;
 
+    [Header("Settings")]
+    [SerializeField] private string openTriggerName = "Open";
+    [SerializeField] private float openedLightIntensity = 4f;
+    [SerializeField] private bool startUnlocked = false;
+
     private bool isUnlocked;
     private bool isOpened;
 
+    private void Awake()
+    {
+        isUnlocked = startUnlocked;
+    }
+
     private void Start()
     {
-        Debug.Log("Start draait");
-        if (animator != null)
+        if (animator == null)
         {
-            Debug.Log("Animator gevonden op: " + animator.gameObject.name);
-            animator.SetTrigger("Open");
+            Debug.LogWarning("TreasureKistController: Animator reference ontbreekt.", this);
         }
-        else
+
+        if (keyPickupInteractable == null)
         {
-            Debug.Log("Animator is null");
+            Debug.LogWarning("TreasureKistController: KeyPickUpInteractable reference ontbreekt.", this);
+        }
+
+        if (roomPuzzleState == null)
+        {
+            Debug.LogWarning("TreasureKistController: RoomPuzzleState reference ontbreekt.", this);
         }
     }
 
     public void Interact()
     {
-        Debug.Log("Interact aangeroepen");
+        Debug.Log("TreasureKistController.Interact() aangeroepen", this);
 
-        if (!isUnlocked || isOpened)
+        if (!isUnlocked)
         {
-            Debug.Log("Kist is nog locked of al open");
+            Debug.Log("Chest is nog locked.", this);
             return;
         }
 
+        if (isOpened)
+        {
+            Debug.Log("Chest is al geopend.", this);
+            return;
+        }
+
+        OpenChest();
+    }
+
+    public void UnlockChest()
+    {
+        isUnlocked = true;
+        Debug.Log("Chest unlocked.", this);
+    }
+
+    private void OpenChest()
+    {
         isOpened = true;
 
         if (animator != null)
         {
-            Debug.Log("Open trigger gezet");
-            animator.SetTrigger("Open");
-        }
-        else
-        {
-            Debug.Log("Animator is null");
-        }
-
-        if (roomPuzzleState != null)
-        {
-            roomPuzzleState.OpenChest();
+            animator.ResetTrigger(openTriggerName);
+            animator.SetTrigger(openTriggerName);
+            Debug.Log("Open trigger gezet op animator.", this);
         }
 
         if (openAudioSource != null)
@@ -59,7 +83,12 @@ public class TreasureKistController : MonoBehaviour
 
         if (chestFeedbackLight != null)
         {
-            chestFeedbackLight.intensity = 4f;
+            chestFeedbackLight.intensity = openedLightIntensity;
+        }
+
+        if (roomPuzzleState != null)
+        {
+            roomPuzzleState.OpenChest();
         }
 
         if (keyPickupInteractable != null)
@@ -68,8 +97,13 @@ public class TreasureKistController : MonoBehaviour
         }
     }
 
-    public void UnlockChest()
+    public bool IsUnlocked()
     {
-        isUnlocked = true;
+        return isUnlocked;
+    }
+
+    public bool IsOpened()
+    {
+        return isOpened;
     }
 }
