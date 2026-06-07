@@ -79473,7 +79473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: Interact
-  bookshelfPuzzleController: {fileID: 0}
+  bookshelfPuzzleController: {fileID: 1440542722}
   clickAudioSource: {fileID: 0}
   switchVisual: {fileID: 0}
 --- !u!114 &1440542721
