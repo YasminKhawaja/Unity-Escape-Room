@@ -79443,12 +79443,39 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 157522, guid: 05321276d9d746b7b382f6d02305b9c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1440542721}
+    - targetCorrespondingSourceObject: {fileID: 157522, guid: 05321276d9d746b7b382f6d02305b9c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440542722}
+    - targetCorrespondingSourceObject: {fileID: 120512, guid: 05321276d9d746b7b382f6d02305b9c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440542719}
   m_SourcePrefab: {fileID: 100100000, guid: 05321276d9d746b7b382f6d02305b9c4, type: 3}
 --- !u!4 &1440542717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 457522, guid: 05321276d9d746b7b382f6d02305b9c4, type: 3}
   m_PrefabInstance: {fileID: 1440542716}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1440542718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 120512, guid: 05321276d9d746b7b382f6d02305b9c4, type: 3}
+  m_PrefabInstance: {fileID: 1440542716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1440542719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440542718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268947025230e154b92ed5d657891c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptText: Interact
+  bookshelfPuzzleController: {fileID: 0}
+  clickAudioSource: {fileID: 0}
+  switchVisual: {fileID: 0}
 --- !u!114 &1440542721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79461,6 +79488,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fb91b86792cdd47a89d45016755b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1440542722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412452893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ae2147ca2f1874ca7342cbaa6c0e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyPickupInteractable: {fileID: 0}
+  puzzleSolvedAudioSource: {fileID: 0}
+  feedbackLight: {fileID: 0}
+  solvedLightIntensity: 3.5
 --- !u!1001 &1440644567
 PrefabInstance:
   m_ObjectHideFlags: 0
