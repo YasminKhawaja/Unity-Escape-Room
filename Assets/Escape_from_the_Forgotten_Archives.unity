@@ -16625,7 +16625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cc7fbb8d99a46458c19eeda75d3aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPuzzleState: {fileID: 0}
+  roomPuzzleState: {fileID: 1440542721}
   keyPickupInteractable: {fileID: 0}
   animator: {fileID: 614944800}
   openAudioSource: {fileID: 0}
