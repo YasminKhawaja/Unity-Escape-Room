@@ -16632,7 +16632,7 @@ MonoBehaviour:
   chestFeedbackLight: {fileID: 0}
   openTriggerName: Open
   openedLightIntensity: 4
-  startUnlocked: 0
+  startUnlocked: 1
 --- !u!54 &319396665
 Rigidbody:
   m_ObjectHideFlags: 0

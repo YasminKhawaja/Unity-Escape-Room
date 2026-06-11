@@ -25,20 +25,16 @@ public class TreasureKistController : MonoBehaviour
     private void Start()
     {
         Debug.Log("TreasureKistController Start werkt", this);
+
         if (animator == null)
         {
             Debug.LogWarning("TreasureKistController: Animator reference ontbreekt.", this);
+            return;
         }
 
-        if (keyPickupInteractable == null)
-        {
-            Debug.LogWarning("TreasureKistController: KeyPickUpInteractable reference ontbreekt.", this);
-        }
-
-        if (roomPuzzleState == null)
-        {
-            Debug.LogWarning("TreasureKistController: RoomPuzzleState reference ontbreekt.", this);
-        }
+        animator.ResetTrigger(openTriggerName);
+        animator.SetTrigger(openTriggerName);
+        Debug.Log("Trigger gezet in Start()", this);
     }
 
     public void Interact()
