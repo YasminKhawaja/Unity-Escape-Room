@@ -40,8 +40,6 @@ public class TreasureKistController : MonoBehaviour
     public void Interact()
     {
         Debug.Log("Interact aangeroepen", this);
-        animator.SetTrigger("Open");
-        Debug.Log("TreasureKistController.Interact() aangeroepen", this);
 
         if (!isUnlocked)
         {
@@ -54,7 +52,7 @@ public class TreasureKistController : MonoBehaviour
             Debug.Log("Chest is al geopend.", this);
             return;
         }
-        Debug.Log("Chest is unlocked, probeer te openen", this);
+
         OpenChest();
     }
 
