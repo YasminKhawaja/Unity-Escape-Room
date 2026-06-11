@@ -24,6 +24,7 @@ public class TreasureKistController : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("TreasureKistController Start werkt", this);
         if (animator == null)
         {
             Debug.LogWarning("TreasureKistController: Animator reference ontbreekt.", this);
@@ -42,7 +43,7 @@ public class TreasureKistController : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("Interact aangeroepen");
+        Debug.Log("Interact aangeroepen", this);
         animator.SetTrigger("Open");
         Debug.Log("TreasureKistController.Interact() aangeroepen", this);
 
@@ -57,7 +58,7 @@ public class TreasureKistController : MonoBehaviour
             Debug.Log("Chest is al geopend.", this);
             return;
         }
-
+        Debug.Log("Chest is unlocked, probeer te openen", this);
         OpenChest();
     }
 
@@ -69,13 +70,19 @@ public class TreasureKistController : MonoBehaviour
 
     private void OpenChest()
     {
+        Debug.Log("OpenChest aangeroepen", this);
         isOpened = true;
 
         if (animator != null)
         {
+            Debug.Log("Open trigger gezet op animator.");
             animator.ResetTrigger(openTriggerName);
             animator.SetTrigger(openTriggerName);
             Debug.Log("Open trigger gezet op animator.", this);
+        }
+        else
+        {
+            Debug.LogWarning("Animator is NULL", this);
         }
 
         if (openAudioSource != null)
