@@ -36176,9 +36176,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 101314, guid: 58d83b4a8dd8477883ef7bd4c4718519, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1400766823}
-    - targetCorrespondingSourceObject: {fileID: 101314, guid: 58d83b4a8dd8477883ef7bd4c4718519, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1400766824}
   m_SourcePrefab: {fileID: 100100000, guid: 58d83b4a8dd8477883ef7bd4c4718519, type: 3}
 --- !u!1001 &592880332
 PrefabInstance:
@@ -77464,22 +77461,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1400766824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400766822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff8a1f3e69ff6b488547bf8f833102c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1400766823}
-  keyObject: {fileID: 0}
-  tipOverAudioSource: {fileID: 0}
-  tipOverTriggerName: TipOver
 --- !u!1001 &1402128621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89535,6 +89516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1606858757}
   - component: {fileID: 1606858758}
+  - component: {fileID: 1606858759}
   m_Layer: 0
   m_Name: InteractionZone
   m_TagString: Untagged
@@ -89578,6 +89560,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1606858759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606858756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff8a1f3e69ff6b488547bf8f833102c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1400766823}
+  keyObject: {fileID: 0}
+  tipOverAudioSource: {fileID: 0}
+  tipOverTriggerName: TipOver
 --- !u!1001 &1607417847
 PrefabInstance:
   m_ObjectHideFlags: 0
