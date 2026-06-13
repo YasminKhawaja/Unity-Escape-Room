@@ -10,10 +10,23 @@ public class FinalRoomCollectionController : MonoBehaviour
     private bool hasBook06;
     private bool hasPaper01;
     private bool hasOpenedChest;
+    private bool isPlayerInDocumentRoom;
 
     private void Start()
     {
+        HidePrompt();
+    }
+
+    public void EnterDocumentRoom()
+    {
+        isPlayerInDocumentRoom = true;
         UpdateProgressText();
+    }
+
+    public void ExitDocumentRoom()
+    {
+        isPlayerInDocumentRoom = false;
+        HidePrompt();
     }
 
     public void CollectItem(CollectibleItem collectedItem)
@@ -31,12 +44,21 @@ public class FinalRoomCollectionController : MonoBehaviour
             hasPaper01 = true;
         }
 
-        UpdateProgressText();
+        if (isPlayerInDocumentRoom)
+        {
+            UpdateProgressText();
+        }
+
         CheckIfAllItemsCollected();
     }
 
     public void ShowPrompt(string promptMessage)
     {
+        if (!isPlayerInDocumentRoom)
+        {
+            return;
+        }
+
         if (interactionPromptText != null)
         {
             interactionPromptText.text = promptMessage;
@@ -45,6 +67,11 @@ public class FinalRoomCollectionController : MonoBehaviour
 
     public void ShowDefaultPrompt()
     {
+        if (!isPlayerInDocumentRoom)
+        {
+            return;
+        }
+
         UpdateProgressText();
     }
 
@@ -59,7 +86,7 @@ public class FinalRoomCollectionController : MonoBehaviour
         {
             hasOpenedChest = true;
 
-            if (interactionPromptText != null)
+            if (interactionPromptText != null && isPlayerInDocumentRoom)
             {
                 interactionPromptText.text = "Je hebt alle documenten verzameld. De schatkist opent.";
             }
@@ -93,5 +120,13 @@ public class FinalRoomCollectionController : MonoBehaviour
         }
 
         interactionPromptText.text = "Verzamel de 3 documenten: " + collectedCount + "/3";
+    }
+
+    private void HidePrompt()
+    {
+        if (interactionPromptText != null)
+        {
+            interactionPromptText.text = string.Empty;
+        }
     }
 }
