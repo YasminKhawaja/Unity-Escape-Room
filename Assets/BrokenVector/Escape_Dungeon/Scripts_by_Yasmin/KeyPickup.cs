@@ -17,22 +17,22 @@
 // }
 
 
-using UnityEngine;
+// using UnityEngine;
 
-public class KeyPickup : MonoBehaviour
-{
-    public string keyID; // bv. "FireKey", "BasementKey"
-    public AudioSource pickupSound;
+// public class KeyPickup : MonoBehaviour
+// {
+//     public string keyID; // bv. "FireKey", "BasementKey"
+//     public AudioSource pickupSound;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            var inv = other.GetComponent<PlayerInventory>();
-            inv.AddKey(keyID);
+//     private void OnTriggerEnter(Collider other)
+//     {
+//         if (other.CompareTag("Player"))
+//         {
+//             var inv = other.GetComponent<PlayerInventory>();
+//             inv.AddKey(keyID);
 
-            pickupSound.Play();
-            Destroy(gameObject, pickupSound.clip.length);
-        }
-    }
-}
+//             pickupSound.Play();
+//             Destroy(gameObject, pickupSound.clip.length);
+//         }
+//     }
+// }

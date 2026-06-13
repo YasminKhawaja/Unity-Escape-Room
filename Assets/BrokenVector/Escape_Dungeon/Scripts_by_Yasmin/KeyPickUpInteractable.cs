@@ -1,32 +1,21 @@
 using UnityEngine;
 
-public class KeyPickUpInteractable : MonoBehaviour
+public class KeyPickupInteractable : InteractableBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private RoomPuzzleState roomPuzzleState;
-    [SerializeField] private AudioSource pickupAudioSource;
+    [SerializeField] private string keyID = "Key";
+    [SerializeField] private AudioClip pickupSound;
 
-    private bool canBeCollected;
-
-    public void UnlockKey()
+    public override void Interact()
     {
-        canBeCollected = true;
-        gameObject.SetActive(true);
-    }
+        Debug.Log("Sleutel interact gestart: " + keyID);
 
-    public void Interact()
-    {
-        if (!canBeCollected)
+        InventorySystem.AddKey(keyID);
+
+        if (pickupSound != null)
         {
-            return;
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
         }
 
-        if (pickupAudioSource != null)
-        {
-            pickupAudioSource.Play();
-        }
-
-        roomPuzzleState.CollectKey();
         gameObject.SetActive(false);
     }
 }
