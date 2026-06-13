@@ -29,7 +29,7 @@ public class VaseInteractable : MonoBehaviour
     private void TipOver()
     {
         hasTippedOver = true;
-        Debug.Log("Vaas valt om!");
+        Debug.Log("Vaas schuift naar voor!");
 
         if (animator != null)
         {
@@ -45,6 +45,10 @@ public class VaseInteractable : MonoBehaviour
         if (keyObject != null)
         {
             keyObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Animator referece ontbreekt");
         }
     }
 }
