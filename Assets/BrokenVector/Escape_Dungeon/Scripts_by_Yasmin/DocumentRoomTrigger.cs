@@ -3,30 +3,25 @@ using UnityEngine;
 public class DocumentRoomTrigger : MonoBehaviour
 {
     [SerializeField] private FinalRoomCollectionController collectionController;
+    [SerializeField] private string playerTag = "Player";
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag(playerTag))
         {
             return;
         }
 
-        if (collectionController != null)
-        {
-            collectionController.EnterDocumentRoom();
-        }
+        collectionController.EnterDocumentRoom();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag(playerTag))
         {
             return;
         }
 
-        if (collectionController != null)
-        {
-            collectionController.ExitDocumentRoom();
-        }
+        collectionController.ExitDocumentRoom();
     }
 }
