@@ -31,6 +31,7 @@ public class VaseInteractable : MonoBehaviour
 
         if (animator != null)
         {
+            Debug.Log("Trigger gezet op animator: " + tipOverTriggerName, this);
             animator.SetTrigger(tipOverTriggerName);
         }
 
