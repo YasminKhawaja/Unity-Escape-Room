@@ -14,13 +14,15 @@ public class VaseInteractable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter: " + other.gameObject.name + " | Tag: " + other.tag);
+        Debug.Log("TRIGGER geraakt door: " + other.name + " | tag: " + other.tag, this);
 
         if (hasTippedOver || !other.CompareTag("Player"))
         {
             return;
         }
-
+        //  if (!other.CompareTag("Player"))
+        //     return;
+        Debug.Log("PLAYER in trigger!", this);
         TipOver();
     }
 
