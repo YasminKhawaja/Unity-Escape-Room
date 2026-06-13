@@ -26,6 +26,14 @@ public class TreasureChestController : MonoBehaviour
         }
     }
 
+    private void Update()
+{
+    if (Input.GetKeyDown(KeyCode.O))
+    {
+        OpenChest();
+    }
+}
+
     public void OpenChest()
     {
         if (isOpen)

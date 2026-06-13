@@ -9,7 +9,17 @@ public class CollectibleItem : InteractableObject
 
     public override void Interact()
     {
-        collectionController.CollectItem(this);
+        Debug.Log("CollectibleItem Interact called for: " + itemId);
+
+        if (collectionController != null)
+        {
+            collectionController.CollectItem(this);
+        }
+        else
+        {
+            Debug.LogError("CollectionController is missing on item: " + itemId);
+        }
+
         gameObject.SetActive(false);
     }
 }

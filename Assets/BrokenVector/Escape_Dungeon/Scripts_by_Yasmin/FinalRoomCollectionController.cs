@@ -31,6 +31,8 @@ public class FinalRoomCollectionController : MonoBehaviour
 
     public void CollectItem(CollectibleItem collectedItem)
     {
+        Debug.Log("Collected item id: " + collectedItem.ItemId);
+
         if (collectedItem.ItemId == "paper03")
         {
             hasPaper03 = true;
@@ -43,6 +45,12 @@ public class FinalRoomCollectionController : MonoBehaviour
         {
             hasPaper01 = true;
         }
+        else
+        {
+            Debug.LogWarning("Unknown item id: " + collectedItem.ItemId);
+        }
+
+        Debug.Log("Status -> paper03: " + hasPaper03 + ", book06: " + hasBook06 + ", paper01: " + hasPaper01);
 
         if (isPlayerInDocumentRoom)
         {
@@ -77,13 +85,17 @@ public class FinalRoomCollectionController : MonoBehaviour
 
     private void CheckIfAllItemsCollected()
     {
+        Debug.Log("Checking all items collected...");
+
         if (hasOpenedChest)
         {
+            Debug.Log("Chest already opened.");
             return;
         }
 
         if (hasPaper03 && hasBook06 && hasPaper01)
         {
+            Debug.Log("All items collected. Opening chest.");
             hasOpenedChest = true;
 
             if (interactionPromptText != null && isPlayerInDocumentRoom)
@@ -91,7 +103,14 @@ public class FinalRoomCollectionController : MonoBehaviour
                 interactionPromptText.text = "Je hebt alle documenten verzameld. De schatkist opent.";
             }
 
-            treasureChestController.OpenChest();
+            if (treasureChestController != null)
+            {
+                treasureChestController.OpenChest();
+            }
+            else
+            {
+                Debug.LogError("TreasureChestController reference is missing.");
+            }
         }
     }
 
