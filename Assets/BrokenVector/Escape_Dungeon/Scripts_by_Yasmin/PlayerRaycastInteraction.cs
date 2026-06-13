@@ -10,12 +10,17 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
     private void Update()
     {
+        if (playerCamera == null || collectionController == null)
+        {
+            return;
+        }
+
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactDistance, interactionLayers))
         {
-            InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
+            InteractableObject interactableObject = hit.collider.GetComponentInParent<InteractableObject>();
 
             if (interactableObject != null)
             {
