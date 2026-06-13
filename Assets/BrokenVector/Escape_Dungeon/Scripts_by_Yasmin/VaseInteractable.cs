@@ -14,23 +14,26 @@ public class VaseInteractable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter: " + other.gameObject.name + " | Tag: " + other.tag);
+        Debug.Log("TRIGGER geraakt door: " + other.name + " | tag: " + other.tag, this);
 
         if (hasTippedOver || !other.CompareTag("Player"))
         {
             return;
         }
-
+        //  if (!other.CompareTag("Player"))
+        //     return;
+        Debug.Log("PLAYER in trigger!", this);
         TipOver();
     }
 
     private void TipOver()
     {
         hasTippedOver = true;
-        Debug.Log("Vaas valt om!");
+        Debug.Log("Vaas schuift naar voor!");
 
         if (animator != null)
         {
+            Debug.Log("Trigger gezet op animator: " + tipOverTriggerName, this);
             animator.SetTrigger(tipOverTriggerName);
         }
 
@@ -42,6 +45,10 @@ public class VaseInteractable : MonoBehaviour
         if (keyObject != null)
         {
             keyObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Animator referece ontbreekt");
         }
     }
 }
