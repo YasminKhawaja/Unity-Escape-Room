@@ -192,7 +192,94 @@
 
 
 
+// using UnityEngine;
+
+// public class DoorController : InteractableBase
+// {
+//     [Header("Door Settings")]
+//     [SerializeField] private string requiredKeyID = "Key";
+//     [SerializeField] private Animator animator;
+//     [SerializeField] private AudioSource audioSource;
+//     [SerializeField] private AudioClip openSound;
+
+//     [Header("Hint System")]
+//     [SerializeField] private HintSystemMulti hintSystem;
+//     [SerializeField] private int hintIndex;
+
+//     [Header("UI")]
+//     [SerializeField] private UIInteraction ui;
+
+//     private bool isOpen = false;
+
+//     public override void Interact()
+//     {
+//         Debug.Log("DoorController Interact gestart op: " + gameObject.name);
+//         TryOpenDoor();
+//     }
+
+//     private void TryOpenDoor()
+//     {
+//         if (isOpen)
+//         {
+//             Debug.Log("Deur is al open: " + gameObject.name);
+//             return;
+//         }
+
+//         Debug.Log("Deze deur vraagt sleutel: " + requiredKeyID);
+
+//         if (InventorySystem.HasKey(requiredKeyID))
+//         {
+//             Debug.Log("Sleutel gevonden. Deur mag open.");
+//             OpenDoor();
+//         }
+//         else
+//         {
+//             Debug.LogWarning("Je hebt deze sleutel NIET: " + requiredKeyID);
+
+//             if (hintSystem != null)
+//                 hintSystem.SetDoorIndex(hintIndex);
+//             else
+//                 Debug.LogWarning("HintSystem is niet ingevuld op " + gameObject.name);
+
+//             if (ui != null)
+//                 ui.ShowLockedMessage();
+//             else
+//                 Debug.LogWarning("UI is niet ingevuld op " + gameObject.name);
+//         }
+//     }
+
+//     private void OpenDoor()
+//     {
+//         isOpen = true;
+
+//         Debug.Log("OpenDoor gestart op: " + gameObject.name);
+
+//         if (animator != null)
+//         {
+//             animator.SetTrigger("Open");
+//             Debug.Log("Animator trigger Open verstuurd.");
+//         }
+//         else
+//         {
+//             Debug.LogWarning("Animator ontbreekt op deur: " + gameObject.name);
+//         }
+
+//         if (audioSource != null && openSound != null)
+//         {
+//             audioSource.PlayOneShot(openSound);
+//         }
+
+//         if (ui != null)
+//         {
+//             ui.ShowOpenMessage();
+//         }
+//     }
+// }
+
+
+
 using UnityEngine;
+using TMPro;
 
 public class DoorController : InteractableBase
 {
@@ -201,6 +288,11 @@ public class DoorController : InteractableBase
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip openSound;
+
+    [Header("Final Door")]
+    [SerializeField] private bool isFinalDoor = false;
+    [SerializeField] private TextMeshProUGUI endText;
+    [SerializeField] private string endMessage = "Proficiat! Je hebt de escape room voltooid!";
 
     [Header("Hint System")]
     [SerializeField] private HintSystemMulti hintSystem;
@@ -211,9 +303,19 @@ public class DoorController : InteractableBase
 
     private bool isOpen = false;
 
+    private void Start()
+    {
+        if (endText != null)
+            endText.gameObject.SetActive(false);
+    }
+
     public override void Interact()
     {
         Debug.Log("DoorController Interact gestart op: " + gameObject.name);
+
+        if (hintSystem != null)
+            hintSystem.SetDoorIndex(hintIndex);
+
         TryOpenDoor();
     }
 
@@ -230,7 +332,15 @@ public class DoorController : InteractableBase
         if (InventorySystem.HasKey(requiredKeyID))
         {
             Debug.Log("Sleutel gevonden. Deur mag open.");
-            OpenDoor();
+
+            if (isFinalDoor)
+            {
+                FinishGame();
+            }
+            else
+            {
+                OpenDoor();
+            }
         }
         else
         {
@@ -238,8 +348,6 @@ public class DoorController : InteractableBase
 
             if (hintSystem != null)
                 hintSystem.SetDoorIndex(hintIndex);
-            else
-                Debug.LogWarning("HintSystem is niet ingevuld op " + gameObject.name);
 
             if (ui != null)
                 ui.ShowLockedMessage();
@@ -272,6 +380,26 @@ public class DoorController : InteractableBase
         if (ui != null)
         {
             ui.ShowOpenMessage();
+        }
+    }
+
+    private void FinishGame()
+    {
+        isOpen = true;
+
+        Debug.Log("Escape room voltooid!");
+
+        if (ui != null)
+            ui.HideInteractPrompt();
+
+        if (endText != null)
+        {
+            endText.text = endMessage;
+            endText.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("EndText is niet ingevuld op de finale deur.", this);
         }
     }
 }
