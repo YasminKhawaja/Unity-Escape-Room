@@ -54731,7 +54731,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834769481}
-  - component: {fileID: 834769483}
   m_Layer: 0
   m_Name: HiddenCluePotRoot
   m_TagString: Untagged
@@ -54748,7 +54747,7 @@ Transform:
   m_GameObject: {fileID: 834769480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.17, y: -5.52, z: -26.44}
+  m_LocalPosition: {x: -12.23, y: -5.52, z: -26.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54756,27 +54755,6 @@ Transform:
   - {fileID: 274886838}
   m_Father: {fileID: 625381929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &834769483
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834769480}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7, y: 10, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &836732546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57755,8 +57733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureChestController: {fileID: 821596955}
-  keyFinalObject: {fileID: 1362687157}
-  interactionPromptText: {fileID: 843931262}
+  interactionPromptText: {fileID: 0}
 --- !u!1 &906884218
 GameObject:
   m_ObjectHideFlags: 0
@@ -90421,7 +90398,7 @@ Transform:
   m_GameObject: {fileID: 1606858756}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.052000675, y: 0.76073164, z: 0.08488654}
+  m_LocalPosition: {x: 0.052000675, y: 0.604, z: 0.08488654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
