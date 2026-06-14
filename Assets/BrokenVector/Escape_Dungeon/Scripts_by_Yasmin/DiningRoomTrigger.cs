@@ -14,7 +14,7 @@ public class DiningRoomTrigger : MonoBehaviour
 
         if (puzzleController != null)
         {
-            puzzleController.ShowPrompt(enterMessage);
+            puzzleController.SetRoomMessage(enterMessage);
         }
     }
 }

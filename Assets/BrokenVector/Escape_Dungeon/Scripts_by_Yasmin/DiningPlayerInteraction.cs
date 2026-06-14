@@ -19,6 +19,8 @@ public class DiningPlayerInteraction : MonoBehaviour
             return;
         }
 
+        bool foundInteractable = false;
+
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactionLayers))
@@ -27,6 +29,7 @@ public class DiningPlayerInteraction : MonoBehaviour
 
             if (pickupItem != null)
             {
+                foundInteractable = true;
                 puzzleController.ShowPrompt(pickupItem.PromptText);
 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -35,6 +38,11 @@ public class DiningPlayerInteraction : MonoBehaviour
                     pickupItem.gameObject.SetActive(false);
                 }
             }
+        }
+
+        if (!foundInteractable)
+        {
+            puzzleController.RestoreRoomMessage();
         }
     }
 }

@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public abstract class DiningInteractableObject : MonoBehaviour
+public class DiningInteractableObject : MonoBehaviour
 {
-    [SerializeField] private string promptText = "Druk op E";
+    [SerializeField] private string promptText = "Druk op E om op te pakken.";
 
     public string PromptText => promptText;
-
-    public abstract void Interact(DiningPlayerInteraction playerInteraction);
 }

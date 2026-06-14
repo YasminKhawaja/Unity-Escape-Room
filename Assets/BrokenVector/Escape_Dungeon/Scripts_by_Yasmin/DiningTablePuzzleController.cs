@@ -8,7 +8,9 @@ public class DiningTablePuzzleController : MonoBehaviour
     [SerializeField] private TMP_Text interactionPromptText;
 
     private readonly string[] requiredItems = { "inkpot", "scale", "sandglass" };
-    private HashSet<string> collectedItems = new HashSet<string>();
+    private readonly HashSet<string> collectedItems = new HashSet<string>();
+
+    private string roomMessage = "";
 
     private void Start()
     {
@@ -17,7 +19,10 @@ public class DiningTablePuzzleController : MonoBehaviour
             keyDining.SetActive(false);
         }
 
-        ClearPrompt();
+        if (interactionPromptText != null)
+        {
+            interactionPromptText.text = "";
+        }
     }
 
     public void ShowPrompt(string message)
@@ -36,9 +41,20 @@ public class DiningTablePuzzleController : MonoBehaviour
         }
     }
 
+    public void SetRoomMessage(string message)
+    {
+        roomMessage = message;
+        ShowPrompt(roomMessage);
+    }
+
+    public void RestoreRoomMessage()
+    {
+        ShowPrompt(roomMessage);
+    }
+
     public void RegisterCollectedItem(string itemId)
     {
-        if (string.IsNullOrEmpty(itemId))
+        if (string.IsNullOrWhiteSpace(itemId))
         {
             return;
         }
@@ -52,7 +68,7 @@ public class DiningTablePuzzleController : MonoBehaviour
                 keyDining.SetActive(true);
             }
 
-            ShowPrompt("Je hebt alles gevonden. De sleutel is verschenen.");
+            SetRoomMessage("Je hebt alles gevonden. De sleutel is verschenen.");
         }
     }
 
