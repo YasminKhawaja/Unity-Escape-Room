@@ -3650,7 +3650,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4080145, y: 2.2950897, z: 0.29553437}
+  m_Size: {x: 1.94, y: 2.46, z: 0.28}
   m_Center: {x: 0, y: 1.1481464, z: 0.028115738}
 --- !u!1001 &110204089
 PrefabInstance:
@@ -11995,7 +11995,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 910335247550223072, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1362687163}
   m_SourcePrefab: {fileID: 100100000, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
 --- !u!4 &179725562 stripped
 Transform:
@@ -38174,7 +38177,6 @@ Transform:
   - {fileID: 1891472768}
   - {fileID: 1561482879}
   - {fileID: 1895756140}
-  - {fileID: 773758313}
   - {fileID: 5826582559424988050}
   - {fileID: 1219996366}
   - {fileID: 5826582560212428790}
@@ -39024,8 +39026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f090313cb2614ca6ded0c9ce5dfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: sandglass
   promptText: Druk op E om sandglass op te pakken.
+  itemId: sandglass
 --- !u!1001 &644379041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52577,8 +52579,8 @@ GameObject:
   m_Component:
   - component: {fileID: 773758313}
   - component: {fileID: 773758315}
-  - component: {fileID: 773758314}
-  m_Layer: 0
+  - component: {fileID: 773758316}
+  m_Layer: 3
   m_Name: Door Trigger 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52593,26 +52595,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773758312}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.71432, z: -0, w: 0.69981927}
-  m_LocalPosition: {x: -5.22, y: 0.85, z: -3.84}
-  m_LocalScale: {x: 1.6232818, y: 1.454964, z: 4.574479}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.008900445, y: 0.73255414, z: -0.85043687}
+  m_LocalScale: {x: 1.1499999, y: 1.0449413, z: 4.574479}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 625381929}
+  m_Father: {fileID: 5826582559424988050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &773758314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773758312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15e79aedf72455488b7273b3674c8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 109985282}
 --- !u!65 &773758315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52632,8 +52621,30 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.26, y: 1.3, z: 0.73}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &773758316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773758312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b0ad42e1b5726469dee7e37acc65f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredKeyID: KeyDining
+  animator: {fileID: 109985282}
+  audioSource: {fileID: 5826582559838578950}
+  openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 0
+  endText: {fileID: 0}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
+  hintSystem: {fileID: 1098443268}
+  hintIndex: 2
+  ui: {fileID: 2144332042}
 --- !u!1001 &774143314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63466,12 +63477,13 @@ MonoBehaviour:
   - riddle: Tussen stof en stilte rust iets dat al jaren wacht. Vind wat verborgen
       ligt.
     hint: "Zoek een kist die niet meer opent\u2026 tenzij jij het probeert."
-  - riddle: 
-    hint: 
-  - riddle: 
-    hint: 
-  - riddle: 
-    hint: 
+  - riddle: 'Drie stille dingen wijzen de weg,
+
+      maar alleen samen tonen ze
+      de sleutel.'
+    hint: Verzamel drie objecten in de kamer.
+  - riddle: "Drie woorden dragen het geheim:\r\n\xE9\xE9n gebonden, twee los."
+    hint: "Zoek \xE9\xE9n boek en twee papieren."
 --- !u!4 &1098626775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4725356937742777146, guid: c559a22601843db4c927941c06a8b94b, type: 3}
@@ -70939,7 +70951,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 910335247550223072, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1191909189}
   m_SourcePrefab: {fileID: 100100000, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
 --- !u!4 &1191909181 stripped
 Transform:
@@ -70956,6 +70971,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 910335247550223072, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
   m_PrefabInstance: {fileID: 1191909180}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1191909189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191909183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9ca407db515f9458b1fd26a86443f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyID: KeyDining
+  pickupSound: {fileID: 8300000, guid: df410ec6baf78a647af3224716b4ad49, type: 3}
 --- !u!1001 &1193085560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74408,8 +74437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f090313cb2614ca6ded0c9ce5dfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: scale
   promptText: Druk op E om scale op te pakken.
+  itemId: scale
 --- !u!1001 &1310022903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74642,8 +74671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f090313cb2614ca6ded0c9ce5dfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: inkpot
   promptText: Druk op E om inkpot op te pakken.
+  itemId: inkpot
 --- !u!1001 &1314104956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76478,6 +76507,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 910335247550223072, guid: de8fc3406543e724f9d69e08187864ae, type: 3}
   m_PrefabInstance: {fileID: 179725561}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1362687163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362687157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9ca407db515f9458b1fd26a86443f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyID: KeyFinal
+  pickupSound: {fileID: 8300000, guid: df410ec6baf78a647af3224716b4ad49, type: 3}
 --- !u!1001 &1363481956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82038,6 +82081,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2287398703648107108, guid: dd16a22cb037cde49a72731d9ac9ed35, type: 3}
   m_PrefabInstance: {fileID: 1480039785}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1488351611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488351612}
+  - component: {fileID: 1488351614}
+  - component: {fileID: 1488351613}
+  m_Layer: 5
+  m_Name: ExitText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1488351612
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488351611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2144332041}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -35}
+  m_SizeDelta: {x: 0, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1488351613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488351611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: ExitText
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1488351614
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488351611}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1488526836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95245,6 +95424,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 416386656469751746, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1768414603}
+    - targetCorrespondingSourceObject: {fileID: 416386656469751746, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1768414606}
   m_SourcePrefab: {fileID: 100100000, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
 --- !u!4 &1768414600 stripped
 Transform:
@@ -95272,6 +95454,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4080147, y: 2.2950895, z: 0.29553434}
   m_Center: {x: 0, y: 1.1481465, z: 0.028115734}
+--- !u!114 &1768414606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441272988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b0ad42e1b5726469dee7e37acc65f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredKeyID: KeyFinal
+  animator: {fileID: 0}
+  audioSource: {fileID: 5826582559838578950}
+  openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 1
+  endText: {fileID: 1488351613}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
+  hintSystem: {fileID: 1098443268}
+  hintIndex: 3
+  ui: {fileID: 2144332042}
 --- !u!1001 &1768426982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114154,6 +114358,7 @@ RectTransform:
   - {fileID: 1700789727}
   - {fileID: 1092450707}
   - {fileID: 2079645752}
+  - {fileID: 1488351612}
   - {fileID: 843931261}
   - {fileID: 411565767}
   - {fileID: 1329700393}
@@ -114285,7 +114490,8 @@ GameObject:
   - component: {fileID: 1528194368248576908}
   - component: {fileID: 109985282}
   - component: {fileID: 109985283}
-  m_Layer: 0
+  - component: {fileID: 5826582559424988051}
+  m_Layer: 3
   m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115250,9 +115456,32 @@ Transform:
   m_LocalPosition: {x: -6.07, y: -0.17, z: -3.87}
   m_LocalScale: {x: 1.4115494, y: 1.3923883, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 773758313}
   m_Father: {fileID: 625381929}
   m_LocalEulerAnglesHint: {x: 0, y: -91.175, z: 0}
+--- !u!114 &5826582559424988051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416386656444721725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b0ad42e1b5726469dee7e37acc65f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredKeyID: KeyDining
+  animator: {fileID: 109985282}
+  audioSource: {fileID: 5826582559838578950}
+  openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 0
+  endText: {fileID: 0}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
+  hintSystem: {fileID: 1098443268}
+  hintIndex: 2
+  ui: {fileID: 2144332042}
 --- !u!4 &5826582559838578947
 Transform:
   m_ObjectHideFlags: 0
