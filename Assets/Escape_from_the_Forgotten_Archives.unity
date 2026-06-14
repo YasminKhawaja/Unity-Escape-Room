@@ -14122,6 +14122,9 @@ MonoBehaviour:
   animator: {fileID: 6402509574583416633}
   audioSource: {fileID: 5826582559838578950}
   openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 0
+  endText: {fileID: 0}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
   hintSystem: {fileID: 1098443268}
   hintIndex: 1
   ui: {fileID: 2144332042}
@@ -20953,7 +20956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28983914ff3148448a064422b301bccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Druk op E om het papier op te pakken.
   itemId: paper03
   collectionController: {fileID: 901328085}
 --- !u!1001 &446661810
@@ -54553,7 +54555,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834769481}
-  - component: {fileID: 834769483}
   m_Layer: 0
   m_Name: HiddenCluePotRoot
   m_TagString: Untagged
@@ -54570,7 +54571,7 @@ Transform:
   m_GameObject: {fileID: 834769480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.17, y: -5.52, z: -26.44}
+  m_LocalPosition: {x: -12.23, y: -5.52, z: -26.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54578,27 +54579,6 @@ Transform:
   - {fileID: 274886838}
   m_Father: {fileID: 625381929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &834769483
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834769480}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7, y: 10, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &836732546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56521,6 +56501,9 @@ MonoBehaviour:
   animator: {fileID: 5826582559838578948}
   audioSource: {fileID: 5826582559838578950}
   openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 0
+  endText: {fileID: 0}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
   hintSystem: {fileID: 1098443268}
   hintIndex: 0
   ui: {fileID: 2144332042}
@@ -57574,6 +57557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureChestController: {fileID: 821596955}
+  keyFinalObject: {fileID: 0}
   interactionPromptText: {fileID: 0}
 --- !u!1 &906884218
 GameObject:
@@ -58701,7 +58685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28983914ff3148448a064422b301bccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Druk op E om de documenten op te pakken.
   itemId: paper01
   collectionController: {fileID: 901328085}
 --- !u!1001 &935755076
@@ -79940,10 +79923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268947025230e154b92ed5d657891c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookshelfPuzzleController: {fileID: 1440542722}
-  clickAudioSource: {fileID: 0}
-  switchVisual: {fileID: 0}
-  isActivated: 0
 --- !u!114 &1440542721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79968,12 +79947,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ae2147ca2f1874ca7342cbaa6c0e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyPickupInteractable: {fileID: 0}
-  puzzleSolvedAudioSource: {fileID: 0}
-  feedbackLight: {fileID: 0}
-  solvedLightIntensity: 3.5
-  isSolved: 0
-  defaultLightIntensity: 0
 --- !u!1001 &1440644567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83096,7 +83069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28983914ff3148448a064422b301bccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Druk op E om het boek op te pakken.
   itemId: book06
   collectionController: {fileID: 901328085}
 --- !u!1001 &1534266337
@@ -90222,7 +90194,7 @@ Transform:
   m_GameObject: {fileID: 1606858756}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.052000675, y: 0.76073164, z: 0.08488654}
+  m_LocalPosition: {x: 0.052000675, y: 0.604, z: 0.08488654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -114953,6 +114925,9 @@ MonoBehaviour:
   animator: {fileID: 5826582559838578948}
   audioSource: {fileID: 5826582559838578950}
   openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 0
+  endText: {fileID: 0}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
   hintSystem: {fileID: 1098443268}
   hintIndex: 0
   ui: {fileID: 2144332042}
@@ -115089,6 +115064,9 @@ MonoBehaviour:
   animator: {fileID: 6402509574583416633}
   audioSource: {fileID: 5826582559838578950}
   openSound: {fileID: 8300000, guid: 41007ccc00658344db69f576beb343c5, type: 3}
+  isFinalDoor: 0
+  endText: {fileID: 0}
+  endMessage: Proficiat! Je hebt de escape room voltooid!
   hintSystem: {fileID: 1098443268}
   hintIndex: 1
   ui: {fileID: 2144332042}
