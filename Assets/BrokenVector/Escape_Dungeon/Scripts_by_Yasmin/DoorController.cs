@@ -64,60 +64,342 @@
 // }
 
 
-using UnityEngine;
-using UnityEngine.InputSystem;
+// using UnityEngine;
+// using UnityEngine.InputSystem;
 
-public class DoorController : MonoBehaviour
-{
-    public string requiredKeyID;
-    public Animator animator;
-    public AudioSource audioSource;
-    public AudioClip openSound;
-    public HintSystem hintSystem;
+// public class DoorController : MonoBehaviour
+// {
+//     public string requiredKeyID;
+//     public Animator animator;
+//     public AudioSource audioSource;
+//     public AudioClip openSound;
+//     public HintSystem hintSystem;
     
-    public UIInteraction ui;
+//     public UIInteraction ui;
 
-    private bool isPlayerNear = false;
-    private PlayerInventory inventory;
+//     private bool isPlayerNear = false;
+//     private PlayerInventory inventory;
 
-    private void OnTriggerEnter(Collider other)
+//     private void OnTriggerEnter(Collider other)
+//     {
+//         if (other.CompareTag("Player"))
+//         {
+//             isPlayerNear = true;
+//             inventory = other.GetComponent<PlayerInventory>();
+//             ui.ShowInteractText("Druk op E om te openen");
+//         }
+//     }
+
+//     private void OnTriggerExit(Collider other)
+//     {
+//         if (other.CompareTag("Player"))
+//         {
+//             isPlayerNear = false;
+//             ui.HideInteractText();
+//         }
+//     }
+
+//     private void Update()
+//     {
+//         if (isPlayerNear && Keyboard.current.eKey.wasPressedThisFrame)
+//         {
+//             TryOpenDoor();
+//         }
+//     }
+
+//     private void TryOpenDoor()
+//     {
+//         if (!inventory.HasKey(requiredKeyID))
+//         {
+//             ui.ShowInteractText("De deur is op slot — zoek de sleutel");
+//             hintSystem.ShowRiddle();
+//             return;
+//         }
+
+//         animator.SetTrigger("Open");
+//         audioSource.PlayOneShot(openSound);
+//         ui.HideInteractText();
+//     }
+// }
+
+
+// using UnityEngine;
+
+// public class DoorController : InteractableBase
+// {
+//     [Header("Door Settings")]
+//     [SerializeField] private string requiredKeyID = "Key";
+//     [SerializeField] private Animator animator;
+//     [SerializeField] private AudioSource audioSource;
+//     [SerializeField] private AudioClip openSound;
+
+//     [Header("Hint System")]
+//     [SerializeField] private HintSystemMulti hintSystem;
+//     [SerializeField] private int hintIndex;
+
+//     [Header("UI")]
+//     [SerializeField] private UIInteraction ui;
+
+//     private bool isOpen = false;
+
+//     public override void Interact()
+//     {
+//         TryOpenDoor();
+//     }
+
+//     private void TryOpenDoor()
+//     {
+//         if (isOpen)
+//         {
+//             Debug.Log("Deur is al open.");
+//             return;
+//         }
+
+//         if (InventorySystem.HasKey(requiredKeyID))
+//         {
+//             OpenDoor();
+//         }
+//         else
+//         {
+//             Debug.Log("Geen sleutel: " + requiredKeyID);
+
+//             if (hintSystem != null)
+//                 hintSystem.SetDoorIndex(hintIndex);
+
+//             if (ui != null)
+//                 ui.ShowLockedMessage();
+//         }
+//     }
+
+//     private void OpenDoor()
+//     {
+//         isOpen = true;
+
+//         Debug.Log("Deur opent met sleutel: " + requiredKeyID);
+
+//         if (animator != null)
+//             animator.SetTrigger("Open");
+//         else
+//             Debug.LogWarning("Animator ontbreekt op deur.");
+
+//         if (audioSource != null && openSound != null)
+//             audioSource.PlayOneShot(openSound);
+
+//         if (ui != null)
+//             ui.ShowOpenMessage();
+//     }
+// }
+
+
+
+// using UnityEngine;
+
+// public class DoorController : InteractableBase
+// {
+//     [Header("Door Settings")]
+//     [SerializeField] private string requiredKeyID = "Key";
+//     [SerializeField] private Animator animator;
+//     [SerializeField] private AudioSource audioSource;
+//     [SerializeField] private AudioClip openSound;
+
+//     [Header("Hint System")]
+//     [SerializeField] private HintSystemMulti hintSystem;
+//     [SerializeField] private int hintIndex;
+
+//     [Header("UI")]
+//     [SerializeField] private UIInteraction ui;
+
+//     private bool isOpen = false;
+
+//     public override void Interact()
+//     {
+//         Debug.Log("DoorController Interact gestart op: " + gameObject.name);
+//         TryOpenDoor();
+//     }
+
+//     private void TryOpenDoor()
+//     {
+//         if (isOpen)
+//         {
+//             Debug.Log("Deur is al open: " + gameObject.name);
+//             return;
+//         }
+
+//         Debug.Log("Deze deur vraagt sleutel: " + requiredKeyID);
+
+//         if (InventorySystem.HasKey(requiredKeyID))
+//         {
+//             Debug.Log("Sleutel gevonden. Deur mag open.");
+//             OpenDoor();
+//         }
+//         else
+//         {
+//             Debug.LogWarning("Je hebt deze sleutel NIET: " + requiredKeyID);
+
+//             if (hintSystem != null)
+//                 hintSystem.SetDoorIndex(hintIndex);
+//             else
+//                 Debug.LogWarning("HintSystem is niet ingevuld op " + gameObject.name);
+
+//             if (ui != null)
+//                 ui.ShowLockedMessage();
+//             else
+//                 Debug.LogWarning("UI is niet ingevuld op " + gameObject.name);
+//         }
+//     }
+
+//     private void OpenDoor()
+//     {
+//         isOpen = true;
+
+//         Debug.Log("OpenDoor gestart op: " + gameObject.name);
+
+//         if (animator != null)
+//         {
+//             animator.SetTrigger("Open");
+//             Debug.Log("Animator trigger Open verstuurd.");
+//         }
+//         else
+//         {
+//             Debug.LogWarning("Animator ontbreekt op deur: " + gameObject.name);
+//         }
+
+//         if (audioSource != null && openSound != null)
+//         {
+//             audioSource.PlayOneShot(openSound);
+//         }
+
+//         if (ui != null)
+//         {
+//             ui.ShowOpenMessage();
+//         }
+//     }
+// }
+
+
+
+using UnityEngine;
+using TMPro;
+
+public class DoorController : InteractableBase
+{
+    [Header("Door Settings")]
+    [SerializeField] private string requiredKeyID = "Key";
+    [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip openSound;
+
+    [Header("Final Door")]
+    [SerializeField] private bool isFinalDoor = false;
+    [SerializeField] private TextMeshProUGUI endText;
+    [SerializeField] private string endMessage = "Proficiat! Je hebt de escape room voltooid!";
+
+    [Header("Hint System")]
+    [SerializeField] private HintSystemMulti hintSystem;
+    [SerializeField] private int hintIndex;
+
+    [Header("UI")]
+    [SerializeField] private UIInteraction ui;
+
+    private bool isOpen = false;
+
+    private void Start()
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = true;
-            inventory = other.GetComponent<PlayerInventory>();
-            ui.ShowInteractText("Druk op E om te openen");
-        }
+        if (endText != null)
+            endText.gameObject.SetActive(false);
     }
 
-    private void OnTriggerExit(Collider other)
+    public override void Interact()
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = false;
-            ui.HideInteractText();
-        }
-    }
+        Debug.Log("DoorController Interact gestart op: " + gameObject.name);
 
-    private void Update()
-    {
-        if (isPlayerNear && Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            TryOpenDoor();
-        }
+        if (hintSystem != null)
+            hintSystem.SetDoorIndex(hintIndex);
+
+        TryOpenDoor();
     }
 
     private void TryOpenDoor()
     {
-        if (!inventory.HasKey(requiredKeyID))
+        if (isOpen)
         {
-            ui.ShowInteractText("De deur is op slot — zoek de sleutel");
-            hintSystem.ShowRiddle();
+            Debug.Log("Deur is al open: " + gameObject.name);
             return;
         }
 
-        animator.SetTrigger("Open");
-        audioSource.PlayOneShot(openSound);
-        ui.HideInteractText();
+        Debug.Log("Deze deur vraagt sleutel: " + requiredKeyID);
+
+        if (InventorySystem.HasKey(requiredKeyID))
+        {
+            Debug.Log("Sleutel gevonden. Deur mag open.");
+
+            if (isFinalDoor)
+            {
+                FinishGame();
+            }
+            else
+            {
+                OpenDoor();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Je hebt deze sleutel NIET: " + requiredKeyID);
+
+            if (hintSystem != null)
+                hintSystem.SetDoorIndex(hintIndex);
+
+            if (ui != null)
+                ui.ShowLockedMessage();
+            else
+                Debug.LogWarning("UI is niet ingevuld op " + gameObject.name);
+        }
+    }
+
+    private void OpenDoor()
+    {
+        isOpen = true;
+
+        Debug.Log("OpenDoor gestart op: " + gameObject.name);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Open");
+            Debug.Log("Animator trigger Open verstuurd.");
+        }
+        else
+        {
+            Debug.LogWarning("Animator ontbreekt op deur: " + gameObject.name);
+        }
+
+        if (audioSource != null && openSound != null)
+        {
+            audioSource.PlayOneShot(openSound);
+        }
+
+        if (ui != null)
+        {
+            ui.ShowOpenMessage();
+        }
+    }
+
+    private void FinishGame()
+    {
+        isOpen = true;
+
+        Debug.Log("Escape room voltooid!");
+
+        if (ui != null)
+            ui.HideInteractPrompt();
+
+        if (endText != null)
+        {
+            endText.text = endMessage;
+            endText.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("EndText is niet ingevuld op de finale deur.", this);
+        }
     }
 }

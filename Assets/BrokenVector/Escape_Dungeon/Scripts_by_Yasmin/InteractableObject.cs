@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour
 {
-    [SerializeField] private string promptText = "Druk op E";
+    [SerializeField] private string promptText = "Druk op E om op te pakken.";
 
     public string PromptText => promptText;
 

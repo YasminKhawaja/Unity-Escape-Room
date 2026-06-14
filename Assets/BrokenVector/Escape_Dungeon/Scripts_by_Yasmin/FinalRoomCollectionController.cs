@@ -1,23 +1,176 @@
-using TMPro;
+// using UnityEngine;
+// using TMPro;
+
+// public class FinalRoomCollectionController : MonoBehaviour
+// {
+//     [SerializeField] private TreasureChestController treasureChestController;
+//     [SerializeField] private TMP_Text interactionPromptText;
+
+//     private bool hasPaper03;
+//     private bool hasBook06;
+//     private bool hasPaper01;
+//     private bool hasOpenedChest;
+//     private bool isPlayerInDocumentRoom;
+
+//     private void Start()
+//     {
+//         HidePrompt();
+//     }
+
+//     public void EnterDocumentRoom()
+//     {
+//         isPlayerInDocumentRoom = true;
+//         UpdateProgressText();
+//     }
+
+//     public void ExitDocumentRoom()
+//     {
+//         isPlayerInDocumentRoom = false;
+//         HidePrompt();
+//     }
+
+//     public void CollectItem(CollectibleItem collectedItem)
+//     {
+//         Debug.Log("Collected item id: " + collectedItem.ItemId);
+
+//         if (collectedItem.ItemId == "paper03")
+//         {
+//             hasPaper03 = true;
+//         }
+//         else if (collectedItem.ItemId == "book06")
+//         {
+//             hasBook06 = true;
+//         }
+//         else if (collectedItem.ItemId == "paper01")
+//         {
+//             hasPaper01 = true;
+//         }
+//         else
+//         {
+//             Debug.LogWarning("Unknown item id: " + collectedItem.ItemId);
+//         }
+
+//         Debug.Log("Status -> paper03: " + hasPaper03 + ", book06: " + hasBook06 + ", paper01: " + hasPaper01);
+
+//         if (isPlayerInDocumentRoom)
+//         {
+//             UpdateProgressText();
+//         }
+
+//         CheckIfAllItemsCollected();
+//     }
+
+//     public void ShowPrompt(string promptMessage)
+//     {
+//         if (!isPlayerInDocumentRoom)
+//         {
+//             return;
+//         }
+
+//         if (interactionPromptText != null)
+//         {
+//             interactionPromptText.text = promptMessage;
+//         }
+//     }
+
+//     public void ShowDefaultPrompt()
+//     {
+//         if (!isPlayerInDocumentRoom)
+//         {
+//             return;
+//         }
+
+//         UpdateProgressText();
+//     }
+
+//     private void CheckIfAllItemsCollected()
+//     {
+//         Debug.Log("Checking all items collected...");
+
+//         if (hasOpenedChest)
+//         {
+//             Debug.Log("Chest already opened.");
+//             return;
+//         }
+
+//         if (hasPaper03 && hasBook06 && hasPaper01)
+//         {
+//             Debug.Log("All items collected. Opening chest.");
+//             hasOpenedChest = true;
+
+//             if (interactionPromptText != null && isPlayerInDocumentRoom)
+//             {
+//                 interactionPromptText.text = "Je hebt alle documenten verzameld. De schatkist opent.";
+//             }
+
+//             if (treasureChestController != null)
+//             {
+//                 treasureChestController.OpenChest();
+//             }
+//             else
+//             {
+//                 Debug.LogError("TreasureChestController reference is missing.");
+//             }
+//         }
+//     }
+
+//     private void UpdateProgressText()
+//     {
+//         if (interactionPromptText == null)
+//         {
+//             return;
+//         }
+
+//         int collectedCount = 0;
+
+//         if (hasPaper03)
+//         {
+//             collectedCount++;
+//         }
+
+//         if (hasBook06)
+//         {
+//             collectedCount++;
+//         }
+
+//         if (hasPaper01)
+//         {
+//             collectedCount++;
+//         }
+
+//         interactionPromptText.text = "Verzamel de 3 documenten: " + collectedCount + "/3";
+//     }
+
+//     private void HidePrompt()
+//     {
+//         if (interactionPromptText != null)
+//         {
+//             interactionPromptText.text = string.Empty;
+//         }
+//     }
+// }
+
+
 using UnityEngine;
+using TMPro;
 
 public class FinalRoomCollectionController : MonoBehaviour
 {
-    [SerializeField] private GameObject rewardKeyObject;
+    [Header("References")]
+    [SerializeField] private TreasureChestController treasureChestController;
+    [SerializeField] private GameObject keyFinalObject;
     [SerializeField] private TMP_Text interactionPromptText;
 
     private bool hasPaper03;
     private bool hasBook06;
     private bool hasPaper01;
-    private bool rewardShown;
+    private bool hasOpenedChest;
     private bool isPlayerInDocumentRoom;
 
     private void Start()
     {
-        if (rewardKeyObject != null)
-        {
-            rewardKeyObject.SetActive(false);
-        }
+        if (keyFinalObject != null)
+            keyFinalObject.SetActive(false);
 
         HidePrompt();
     }
@@ -36,6 +189,8 @@ public class FinalRoomCollectionController : MonoBehaviour
 
     public void CollectItem(CollectibleItem collectedItem)
     {
+        Debug.Log("Collected item id: " + collectedItem.ItemId, collectedItem);
+
         if (collectedItem.ItemId == "paper03")
         {
             hasPaper03 = true;
@@ -50,13 +205,11 @@ public class FinalRoomCollectionController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Onbekende itemId: " + collectedItem.ItemId);
+            Debug.LogWarning("Unknown item id: " + collectedItem.ItemId, collectedItem);
         }
 
         if (isPlayerInDocumentRoom)
-        {
             UpdateProgressText();
-        }
 
         CheckIfAllItemsCollected();
     }
@@ -64,49 +217,51 @@ public class FinalRoomCollectionController : MonoBehaviour
     public void ShowPrompt(string promptMessage)
     {
         if (!isPlayerInDocumentRoom)
-        {
             return;
-        }
 
         if (interactionPromptText != null)
-        {
             interactionPromptText.text = promptMessage;
-        }
     }
 
     public void ShowDefaultPrompt()
     {
         if (!isPlayerInDocumentRoom)
-        {
             return;
-        }
 
         UpdateProgressText();
     }
 
     private void CheckIfAllItemsCollected()
     {
-        if (rewardShown)
-        {
+        if (hasOpenedChest)
             return;
-        }
 
         if (hasPaper03 && hasBook06 && hasPaper01)
         {
-            rewardShown = true;
+            hasOpenedChest = true;
 
-            if (rewardKeyObject != null)
+            Debug.Log("Alle documenten verzameld. Chest opent.", this);
+
+            if (interactionPromptText != null && isPlayerInDocumentRoom)
+                interactionPromptText.text = "Je hebt alle documenten verzameld. De schatkist opent.";
+
+            if (treasureChestController != null)
             {
-                rewardKeyObject.SetActive(true);
+                treasureChestController.OpenChest();
             }
             else
             {
-                Debug.LogError("Reward Key Object ontbreekt in FinalRoomCollectionController.");
+                Debug.LogError("TreasureChestController reference is missing.", this);
             }
 
-            if (interactionPromptText != null && isPlayerInDocumentRoom)
+            if (keyFinalObject != null)
             {
-                interactionPromptText.text = "Je hebt alle documenten gevonden. De sleutel is verschenen op de tafel.";
+                keyFinalObject.SetActive(true);
+                Debug.Log("Key_Final is nu zichtbaar.", keyFinalObject);
+            }
+            else
+            {
+                Debug.LogWarning("Key Final Object is niet ingevuld.", this);
             }
         }
     }
@@ -114,35 +269,20 @@ public class FinalRoomCollectionController : MonoBehaviour
     private void UpdateProgressText()
     {
         if (interactionPromptText == null)
-        {
             return;
-        }
 
         int collectedCount = 0;
 
-        if (hasPaper03)
-        {
-            collectedCount++;
-        }
+        if (hasPaper03) collectedCount++;
+        if (hasBook06) collectedCount++;
+        if (hasPaper01) collectedCount++;
 
-        if (hasBook06)
-        {
-            collectedCount++;
-        }
-
-        if (hasPaper01)
-        {
-            collectedCount++;
-        }
-
-        interactionPromptText.text = "Verzamel de 3 documenten. Documenten " + collectedCount + "/3";
+        interactionPromptText.text = "Verzamel de 3 documenten: " + collectedCount + "/3";
     }
 
     private void HidePrompt()
     {
         if (interactionPromptText != null)
-        {
             interactionPromptText.text = string.Empty;
-        }
     }
 }

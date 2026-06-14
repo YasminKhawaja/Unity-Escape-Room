@@ -1,112 +1,173 @@
+// using UnityEngine;
+
+// public class TreasureKistController : InteractableBase
+// {
+//     [Header("References")]
+//     [SerializeField] private RoomPuzzleState roomPuzzleState;
+//     [SerializeField] private Animator animator;
+//     [SerializeField] private AudioSource openAudioSource;
+//     [SerializeField] private Light chestFeedbackLight;
+
+//     [Header("Settings")]
+//     [SerializeField] private string openTriggerName = "Open";
+//     [SerializeField] private float openedLightIntensity = 4f;
+//     [SerializeField] private bool startUnlocked = true;
+
+//     private bool isOpened;
+
+//     public override void Interact()
+//     {
+//         Debug.Log("Interact met kist", this);
+
+//         if (isOpened)
+//         {
+//             Debug.Log("Kist is al open.", this);
+//             return;
+//         }
+
+//         OpenChest();
+//     }
+
+//     private void OpenChest()
+//     {
+//         isOpened = true;
+
+//         Debug.Log("Kist gaat open", this);
+
+//         if (animator != null)
+//             animator.SetTrigger(openTriggerName);
+
+//         if (openAudioSource != null)
+//             openAudioSource.Play();
+
+//         if (chestFeedbackLight != null)
+//             chestFeedbackLight.intensity = openedLightIntensity;
+
+//         if (roomPuzzleState != null)
+//             roomPuzzleState.OpenChest();
+//     }
+
+//     public bool IsOpened() => isOpened;
+// }
+
+
+// using UnityEngine;
+
+// public class TreasureKistController : InteractableBase
+// {
+//     [Header("References")]
+//     [SerializeField] private Animator lidAnimator;
+//     [SerializeField] private GameObject keyObject;
+//     [SerializeField] private AudioSource openAudioSource;
+//     [SerializeField] private Light chestFeedbackLight;
+
+//     [Header("Settings")]
+//     [SerializeField] private string openTriggerName = "Open";
+//     [SerializeField] private float openedLightIntensity = 4f;
+
+//     private bool isOpened = false;
+
+//     private void Start()
+//     {
+//         if (keyObject != null)
+//             keyObject.SetActive(false);
+//     }
+
+//     public override void Interact()
+//     {
+//         Debug.Log("E gedrukt op kist: " + gameObject.name);
+
+//         if (isOpened)
+//         {
+//             Debug.Log("Kist is al open.");
+//             return;
+//         }
+
+//         OpenChest();
+//     }
+
+//     private void OpenChest()
+//     {
+//         isOpened = true;
+
+//         Debug.Log("Kist opent: " + gameObject.name);
+
+//         if (lidAnimator != null)
+//         {
+//             lidAnimator.ResetTrigger(openTriggerName);
+//             lidAnimator.SetTrigger(openTriggerName);
+//         }
+//         else
+//         {
+//             Debug.LogWarning("Lid Animator is niet ingevuld op de kist.", this);
+//         }
+
+//         if (openAudioSource != null)
+//             openAudioSource.Play();
+
+//         if (chestFeedbackLight != null)
+//             chestFeedbackLight.intensity = openedLightIntensity;
+
+//         if (keyObject != null)
+//             keyObject.SetActive(true);
+//     }
+// }
+
+
 using UnityEngine;
 
-public class TreasureKistController : MonoBehaviour
+public class TreasureKistController : InteractableBase
 {
     [Header("References")]
-    [SerializeField] private RoomPuzzleState roomPuzzleState;
-    [SerializeField] private KeyPickUpInteractable keyPickupInteractable;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator lidAnimator;
+    [SerializeField] private GameObject keyObject;
     [SerializeField] private AudioSource openAudioSource;
-    [SerializeField] private Light chestFeedbackLight;
 
     [Header("Settings")]
     [SerializeField] private string openTriggerName = "Open";
-    [SerializeField] private float openedLightIntensity = 4f;
-    [SerializeField] private bool startUnlocked = false;
 
-    private bool isUnlocked;
-    private bool isOpened;
-
-    private void Awake()
-    {
-        isUnlocked = startUnlocked;
-    }
+    private bool isOpened = false;
 
     private void Start()
     {
-        Debug.Log("TreasureKistController Start werkt", this);
-
-        if (animator == null)
-        {
-            Debug.LogWarning("TreasureKistController: Animator reference ontbreekt.", this);
-            return;
-        }
-
-        animator.ResetTrigger(openTriggerName);
-        animator.SetTrigger(openTriggerName);
-        Debug.Log("Trigger gezet in Start()", this);
+        if (keyObject != null)
+            keyObject.SetActive(false);
+        else
+            Debug.LogWarning("Key Object is niet ingevuld op de kist.", this);
     }
 
-    public void Interact()
+    public override void Interact()
     {
-        Debug.Log("Interact aangeroepen", this);
-
-        if (!isUnlocked)
-        {
-            Debug.Log("Chest is nog locked.", this);
-            return;
-        }
+        Debug.Log("Interact op KIST: " + gameObject.name, this);
 
         if (isOpened)
         {
-            Debug.Log("Chest is al geopend.", this);
+            Debug.Log("Kist is al open.", this);
             return;
         }
 
         OpenChest();
     }
 
-    public void UnlockChest()
-    {
-        isUnlocked = true;
-        Debug.Log("Chest unlocked.", this);
-    }
-
     private void OpenChest()
     {
-        Debug.Log("OpenChest aangeroepen", this);
         isOpened = true;
 
-        if (animator != null)
+        Debug.Log("Kist opent. Trigger wordt gestuurd: " + openTriggerName, this);
+
+        if (lidAnimator == null)
         {
-            Debug.Log("Open trigger gezet op animator.");
-            animator.ResetTrigger(openTriggerName);
-            animator.SetTrigger(openTriggerName);
-            Debug.Log("Open trigger gezet op animator.", this);
+            Debug.LogError("Lid Animator is NIET ingevuld op TreasureKistController.", this);
+            return;
         }
-        else
-        {
-            Debug.LogWarning("Animator is NULL", this);
-        }
+
+        lidAnimator.ResetTrigger(openTriggerName);
+        lidAnimator.SetTrigger(openTriggerName);
 
         if (openAudioSource != null)
-        {
             openAudioSource.Play();
-        }
 
-        if (chestFeedbackLight != null)
-        {
-            chestFeedbackLight.intensity = openedLightIntensity;
-        }
-
-        if (roomPuzzleState != null)
-        {
-            roomPuzzleState.OpenChest();
-        }
-
-        if (keyPickupInteractable != null)
-        {
-            keyPickupInteractable.UnlockKey();
-        }
-    }
-
-    public bool IsUnlocked()
-    {
-        return isUnlocked;
-    }
-
-    public bool IsOpened()
-    {
-        return isOpened;
+        if (keyObject != null)
+            keyObject.SetActive(true);
     }
 }
